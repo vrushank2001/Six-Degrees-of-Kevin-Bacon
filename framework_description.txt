@@ -1,0 +1,28 @@
+This document contains the information about the Robot framework of our project.
+It contains all the actors alone with their IDs, movies along with their IDs and the realtionship that we have made to test our project
+
+
+
+actorName - actorId 
+Kevin Bacon - nm0000102
+AK - nm103
+PS - nm104
+VK - nm105
+
+movieName - movieId
+Parasite - nm200
+IronMan - nm201
+Barbie - nm202
+MI - nm203
+
+Relationship (movieName - actorNames) 
+Parasite - Kevin Bacon, PS
+IronMan - AK, PS
+MI - VK, AK
+Barbie - VK
+
+
+
+Year - 2023
+nm202(Barbie) - 2023
+nm203(MI) - 2023

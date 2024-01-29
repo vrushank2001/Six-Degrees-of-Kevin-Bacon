@@ -1,0 +1,73 @@
+The New feature - 
+the new feature that we have incorporated in our system is to have an year !!
+The year will have a realtionship of "RELEASED_IN" with the movie which basically defines that the movie was released in which year. 
+Moreover, you can also extract the list of movies which were released in a particular year and can also check if a particular was released
+in a particular year (basicallt looking was a relationship between the movie and the year)
+
+
+Details - 
+
+
+You have to add the year to the databse to have the relationships with the movie that is why an api has been provided:
+PUT /api/v1/addYear
+Description:- This endpoint is to add an year node itno the database
+Body Parameter:- year: String
+Expected Response:-
+200 OK - For a successful addition of the year 
+400 BAD REQUEST - If the request body is improperly formatted or missing required information or if the year already exists in the database
+500 INTERNAL SERVER ERROR - If save or add was unsuccessful (Java Exception Thrown) which is related to the database
+
+Moreover, you have to add the relationship between a movie and the year which means that the movie was "RELEASED_IN" a particular year
+PUT /api/v1/addYearToMovie
+Description:- This endpoint is to add an "RELEASED_IN" relationship between an year and a movie in the database
+Body Parameter:-
+year: String 
+movieId: String 
+Expected Response:-
+200 OK - For a successful add
+400 BAD REQUEST - If the request body is improperly formatted, or missing required information, or if the year or movie already exists in the database
+404 NOT FOUND - If the year or movie does not exist when adding the relationship.
+500 INTERNAL SERVER ERROR - If save or add was unsuccessful (Java Exception Thrown)
+
+You can also check if there is a movie released in the particular year or you can say that if there is a relationship between a movie and the year 
+GET /api/v1/hasRelationshipBtwMovieYear
+Description:- This endpoint is to check is there exisits a relationship between an year and the movie 
+Query Parameters:-
+year: String
+movieId: String 
+Response:
+year: String
+movieId: String
+hasRelationship: Boolean
+Expected Response:-
+200 OK - For a successful add
+400 BAD REQUEST - If the request body is improperly formatted or missing required information
+404 NOT FOUND - If there is no year or actor in the database that exists with that year/movieId.
+500 INTERNAL SERVER ERROR - If save or add was unsuccessful (Java Exception Thrown)
+
+With this new feature you can you can provide the year and all the movies that were released in that particular year or have a relation can be obtained
+GET /api/v1/getMoviesOfYear
+Description:- This endpoint returns the list of movies which were released in the particular year
+Query Parameters:-
+year: String
+Response:-
+MovieList: List of all the movies which were released in the particular year
+	name: String
+	name: String
+Expected Response:
+200 OK - For successfully finding a path
+400 BAD REQUEST - If the request body is improperly formatted or missing required information
+404 NOT FOUND - If there is no year in the database that exists
+500 INTERNAL SERVER ERROR - If save or add was unsuccessful (Java Exception Thrown)
+
+
+Information about the testing - 
+
+addYearPass - 200
+addYearFail - 400
+addYearToMoviePass - 200
+addYearToMovieFail - 400, 404
+hasRelationshipBtwMovieYearPass - 200
+hasRelationshipBtwMovieYearFail - 400, 404
+getMoviesOfYearPass - 200
+getMoviesOfYearFail - 200, 404
